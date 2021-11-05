@@ -109,13 +109,15 @@ class LoginForm extends Component {
         />
         <div className="logo-container-sm">
           <SiCodechef className="logo-icon" />
-          <p className="logo-content">Amma Kitchen</p>
+          <h1 className="logo-content">Amma Kitchen</h1>
         </div>
         <form className="form-container" onSubmit={this.submitForm}>
           <div className="logo-container-lg">
             <SiCodechef className="logo-icon" />
-            <p className="logo-content">Amma Kitchen</p>
+            <h1 className="logo-content">Amma Kitchen</h1>
           </div>
+
+          <h1>Login</h1>
           <div className="input-container">{this.renderUsernameField()}</div>
           <div className="input-container">{this.renderPasswordField()}</div>
           <button type="submit" className="login-button">

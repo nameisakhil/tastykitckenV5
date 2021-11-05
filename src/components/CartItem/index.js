@@ -28,7 +28,7 @@ const CartItem = props => (
       const totalPrice = cost * quantity
 
       return (
-        <li className="cart-item">
+        <li className="cart-item" testid="cartItem">
           <div className="cart-product-title-brand-container">
             <img className="cart-product-image" src={imageUrl} alt={name} />
             <p className="cart-product-title">{name}</p>

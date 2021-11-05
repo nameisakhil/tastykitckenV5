@@ -8,6 +8,7 @@ import RestaurantDetailSection from './components/RestaurantDetailSection'
 import NotFound from './components/NotFound'
 import Cart from './components/Cart'
 import CartContext from './context/CartContext'
+import PaymentSuccess from './components/PaymentSuccess'
 
 import './App.css'
 
@@ -32,7 +33,6 @@ class App extends Component {
 
   componentDidUpdate() {
     const {cartList} = this.state
-    console.log(cartList)
     localStorage.setItem('cartList', JSON.stringify(cartList))
   }
 
@@ -126,6 +126,11 @@ class App extends Component {
             component={RestaurantDetailSection}
           />
           <ProtectedRoute exact path="/cart" component={Cart} />
+          <ProtectedRoute
+            exact
+            path="/payment-success"
+            component={PaymentSuccess}
+          />
           <Route path="/not-found" component={NotFound} />
           <Redirect to="not-found" />
         </Switch>

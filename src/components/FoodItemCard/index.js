@@ -1,4 +1,5 @@
 import {AiFillStar} from 'react-icons/ai'
+import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import CartContext from '../../context/CartContext'
 
@@ -6,17 +7,37 @@ import './index.css'
 
 const FoodItemCard = props => {
   const {foodData} = props
-  const {name, cost, imageUrl, rating} = foodData
+  const {id, name, cost, imageUrl, rating} = foodData
 
   return (
     <CartContext.Consumer>
       {value => {
-        const quantity = 1
+        const {
+          cartList,
+          addCartItem,
+          incrementCartItemQuantity,
+          decrementCartItemQuantity,
+        } = value
 
-        const {addCartItem} = value
+        const foodObject = cartList.filter(
+          eachCartItem => eachCartItem.id === foodData.id,
+        )
+
+        const quantity = foodObject.length > 0 ? foodObject[0].quantity : 1
+
         const onClickAddToCart = () => {
           addCartItem({...foodData, quantity})
         }
+
+        const onClickDecrement = () => {
+          decrementCartItemQuantity(id)
+        }
+        const onClickIncrement = () => {
+          incrementCartItemQuantity(id)
+        }
+
+        const itemAddedToCart =
+          foodObject.length > 0 ? foodObject[0].id === foodData.id : false
 
         return (
           <li className="food-item">
@@ -27,13 +48,36 @@ const FoodItemCard = props => {
               <p className="rating">
                 <AiFillStar className="ai-star" /> {rating}
               </p>
-              <button
-                type="button"
-                className="add-button"
-                onClick={onClickAddToCart}
-              >
-                Add
-              </button>
+
+              {itemAddedToCart ? (
+                <div className="cart-quantity-container">
+                  <button
+                    type="button"
+                    className="quantity-controller-button"
+                    testid="minus"
+                    onClick={onClickDecrement}
+                  >
+                    <BsDashSquare color="#52606D" size={12} />
+                  </button>
+                  <p className="cart-quantity">{quantity}</p>
+                  <button
+                    type="button"
+                    className="quantity-controller-button"
+                    testid="plus"
+                    onClick={onClickIncrement}
+                  >
+                    <BsPlusSquare color="#52606D" size={12} />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  className="add-button"
+                  onClick={onClickAddToCart}
+                >
+                  Add
+                </button>
+              )}
             </div>
           </li>
         )

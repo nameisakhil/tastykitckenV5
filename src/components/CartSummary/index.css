@@ -71,3 +71,9 @@
     min-width: 250px;
   }
 }
+
+.place-order-link {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+}

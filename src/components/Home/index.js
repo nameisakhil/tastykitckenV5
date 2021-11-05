@@ -93,7 +93,7 @@ class Home extends Component {
 
   renderLoadingView = () => (
     <div className="restaurant-loader-container">
-      <Loader type="Loader" color="#F7931E" height="50" width="50" />
+      <Loader type="Audio" color="#F7931E" height="50" width="50" />
     </div>
   )
 

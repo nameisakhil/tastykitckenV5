@@ -1,7 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
-import {SiCodechef} from 'react-icons/si'
 
 import './index.css'
 
@@ -66,7 +65,7 @@ class LoginForm extends Component {
           className="password-input-field"
           value={password}
           onChange={this.onChangePassword}
-          placeholder="Password"
+          placeholder="PASSWORD"
         />
       </>
     )
@@ -86,7 +85,7 @@ class LoginForm extends Component {
           className="username-input-field"
           value={username}
           onChange={this.onChangeUsername}
-          placeholder="Username"
+          placeholder="USERNAME"
         />
       </>
     )
@@ -108,16 +107,24 @@ class LoginForm extends Component {
           alt="website login"
         />
         <div className="logo-container-sm">
-          <SiCodechef className="logo-icon" />
-          <h1 className="logo-content">Amma Kitchen</h1>
+          <img
+            src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636190658/tastykitcken/Frame_274_tovmcv.jpg"
+            alt="website logo"
+            className="login-website-logo-mobile-img"
+          />
+          <h1 className="logo-content">Tasty Kitchens</h1>
         </div>
         <form className="form-container" onSubmit={this.submitForm}>
           <div className="logo-container-lg">
-            <SiCodechef className="logo-icon" />
-            <h1 className="logo-content">Amma Kitchen</h1>
+            <img
+              src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636190658/tastykitcken/Frame_274_tovmcv.jpg"
+              alt="website logo"
+              className="login-website-logo-desktop-img"
+            />
+            <h1 className="logo-content">Tasty Kitchens</h1>
           </div>
 
-          <h1>Login</h1>
+          <h1 className="login-heading">Login</h1>
           <div className="input-container">{this.renderUsernameField()}</div>
           <div className="input-container">{this.renderPasswordField()}</div>
           <button type="submit" className="login-button">

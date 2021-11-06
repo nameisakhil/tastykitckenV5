@@ -7,7 +7,7 @@ import './index.css'
 export default function Footer() {
   return (
     <div className="footer-container">
-      <h1 className="footer-heading">Amma Kitchen </h1>
+      <h1 className="footer-heading">Tasty Kitchen </h1>
       <p className="footer-description">
         The only thing we are serious about is food. Contact us on
       </p>

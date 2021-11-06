@@ -13,13 +13,13 @@ const FoodItemCard = props => {
     <CartContext.Consumer>
       {value => {
         const {
-          cartList,
+          cartData,
           addCartItem,
           incrementCartItemQuantity,
           decrementCartItemQuantity,
         } = value
 
-        const foodObject = cartList.filter(
+        const foodObject = cartData.filter(
           eachCartItem => eachCartItem.id === foodData.id,
         )
 

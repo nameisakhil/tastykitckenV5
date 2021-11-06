@@ -6,11 +6,11 @@ import './index.css'
 const CartListView = () => (
   <CartContext.Consumer>
     {value => {
-      const {cartList} = value
+      const {cartData} = value
 
       return (
         <ul className="cart-list">
-          {cartList.map(eachCartItem => (
+          {cartData.map(eachCartItem => (
             <CartItem key={eachCartItem.id} cartItemDetails={eachCartItem} />
           ))}
         </ul>

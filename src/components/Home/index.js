@@ -3,6 +3,7 @@ import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {Link} from 'react-router-dom'
 import {BsSearch} from 'react-icons/bs'
+import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from 'react-icons/md'
 
 import Header from '../Header'
 import RestaurantCard from '../RestaurantCard'
@@ -36,8 +37,10 @@ class Home extends Component {
   state = {
     restaurantList: [],
     apiStatus: apiStatusConstants.initial,
-    activeOptionId: sortByOptions[0].value,
+    activeOptionId: sortByOptions[1].value,
     searchInput: '',
+    activePage: 1,
+    totalItems: 0,
   }
 
   componentDidMount() {
@@ -49,11 +52,11 @@ class Home extends Component {
       apiStatus: apiStatusConstants.inProgress,
     })
     const jwtToken = Cookies.get('jwt_token')
-    const {activeOptionId, searchInput} = this.state
-    const LIMIT = 20
-    const offset = 0
+    const {activeOptionId, searchInput, activePage} = this.state
+    const limit = 9
+    const offset = (activePage - 1) * limit
 
-    const apiUrl = `https://apis.ccbp.in/restaurants-list?search=${searchInput}&offset=${offset}&limit=${LIMIT}&sort_by_rating=${activeOptionId}`
+    const apiUrl = `https://apis.ccbp.in/restaurants-list?search=${searchInput}&offset=${offset}&limit=${limit}&sort_by_rating=${activeOptionId}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -63,8 +66,8 @@ class Home extends Component {
     const response = await fetch(apiUrl, options)
 
     if (response.ok === true) {
-      const fetchedDate = await response.json()
-      const updatedData = fetchedDate.restaurants.map(eachItem => ({
+      const fetchedData = await response.json()
+      const updatedData = fetchedData.restaurants.map(eachItem => ({
         hasOnlineDelivery: eachItem.has_online_delivery,
         userRating: eachItem.user_rating,
         name: eachItem.name,
@@ -80,9 +83,12 @@ class Home extends Component {
         groupByTime: eachItem.group_by_time,
       }))
 
+      const totalItems = fetchedData.total
+
       this.setState({
         restaurantList: updatedData,
         apiStatus: apiStatusConstants.success,
+        totalItems,
       })
     } else {
       this.setState({
@@ -126,7 +132,7 @@ class Home extends Component {
   }
 
   changeSearchInput = searchInput => {
-    this.setState({searchInput})
+    this.setState({searchInput}, this.getRestaurant)
   }
 
   onChangeSearchInput = event => this.changeSearchInput(event.target.value)
@@ -154,8 +160,27 @@ class Home extends Component {
     )
   }
 
+  onClickLeft = () => {
+    this.setState(prevState => {
+      if (prevState.activePage > 1) {
+        return {activePage: prevState.activePage - 1}
+      }
+      return {activePage: prevState.activePage}
+    }, this.getRestaurant)
+  }
+
+  onClickRight = () => {
+    this.setState(prevState => {
+      const totalPages = prevState.totalItems / 9
+      if (prevState.activePage <= totalPages) {
+        return {activePage: prevState.activePage + 1}
+      }
+      return {activePage: prevState.activePage}
+    }, this.getRestaurant)
+  }
+
   renderRestaurantListView = () => {
-    const {restaurantList, activeOptionId} = this.state
+    const {restaurantList, activeOptionId, activePage, totalItems} = this.state
 
     return (
       <div className="all-restaurant-container">
@@ -170,6 +195,27 @@ class Home extends Component {
             <RestaurantCard restaurantData={restaurant} key={restaurant.id} />
           ))}
         </ul>
+        <div className="page-container">
+          <button
+            type="button"
+            className="page-controller-button"
+            testid="left"
+            onClick={this.onClickLeft}
+          >
+            <MdKeyboardArrowLeft color="#52606D" size={20} />
+          </button>
+          <p className="page-no-quantity">
+            {activePage} of {Math.ceil(totalItems / 9)}
+          </p>
+          <button
+            type="button"
+            className="page-controller-button"
+            testid="right"
+            onClick={this.onClickRight}
+          >
+            <MdKeyboardArrowRight color="#52606D" size={20} />
+          </button>
+        </div>
       </div>
     )
   }

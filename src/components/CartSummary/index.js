@@ -7,10 +7,10 @@ import './index.css'
 const CartSummary = () => (
   <CartContext.Consumer>
     {value => {
-      const {cartList} = value
+      const {cartData} = value
 
       let total = 0
-      cartList.forEach(eachCartItem => {
+      cartData.forEach(eachCartItem => {
         total += eachCartItem.cost * eachCartItem.quantity
       })
 
@@ -21,7 +21,7 @@ const CartSummary = () => (
               <span className="order-total-label">Order Total:</span> Rs {total}
               /-
             </h1>
-            <p className="total-items">{cartList.length} Items in cart</p>
+            <p className="total-items">{cartData.length} Items in cart</p>
             <Link to="/payment-success">
               <button type="button" className="checkout-button d-sm-none">
                 Place Order

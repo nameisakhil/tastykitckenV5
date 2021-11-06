@@ -17,6 +17,15 @@
   }
 }
 
+.login-heading {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 40px;
+  color: #0f172a;
+}
+
 .login-website-logo-mobile-img {
   width: 165px;
   margin-top: 50px;
@@ -189,5 +198,27 @@
 @media screen and (min-width: 992px) {
   .logo-content {
     font-size: 15px;
+  }
+}
+
+.login-website-logo-desktop-img {
+  width: 25px;
+}
+
+@media screen and (max-width: 991px) {
+  .login-website-logo-desktop-img {
+    display: none;
+  }
+}
+
+.login-website-logo-mobile-img {
+  width: 21px;
+  margin-top: 50px;
+  margin-bottom: 35px;
+}
+
+@media screen and (min-width: 992px) {
+  .login-website-logo-mobile-img {
+    display: none;
   }
 }

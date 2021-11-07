@@ -20,16 +20,16 @@ const Cart = () => (
       return (
         <>
           <Header />
-          <div className="cart-container">
+          <div className="cart-container" testid="cartItem">
             {showEmptyView ? (
               <EmptyCartView />
             ) : (
               <div className="cart-content-container">
-                <div className="heading-container">
-                  <h1 className="cart-heading">Item</h1>
-                  <h1 className="cart-heading">Quantity</h1>
-                  <h1 className="cart-heading">Price</h1>
-                </div>
+                <ul className="heading-container">
+                  <li className="cart-heading">Item</li>
+                  <li className="cart-heading">Quantity</li>
+                  <li className="cart-heading">Price</li>
+                </ul>
 
                 <button
                   type="button"

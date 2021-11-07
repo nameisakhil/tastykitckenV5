@@ -78,12 +78,13 @@
 }
 
 .total-reviews {
-  font: 'DM Sans';
+  font-family: 'DM Sans';
   weight: 400;
   style: normal;
-  size: 12px;
+  font-size: 14px;
   color: #64748b;
   padding-left: 5px;
+  padding-top: 8px;
 }
 
 .card-content-container {

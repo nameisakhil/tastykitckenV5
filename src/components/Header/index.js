@@ -15,20 +15,20 @@ const Header = props => {
   }
 
   return (
-    <nav className="nav-header">
+    <nav className="nav-header" fixed="top">
       <div className="nav-content-container">
-        <div className="nav-bar-mobile-container">
-          <Link to="/">
-            <div className="logo-container">
+        <ul className="nav-bar-mobile-container">
+          <Link to="/" className="nav-link">
+            <li className="logo-container">
               <img
-                src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636190658/tastykitcken/Frame_274_tovmcv.jpg"
+                src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636267706/tastykitcken/Group_7420_ygqqpl.png"
                 alt="website logo"
                 className="login-website-logo-mobile-img"
               />
               <p className="logo-content">Tasty Kitchen</p>
-            </div>
+            </li>
           </Link>
-          <ul className="nav-menu">
+          <div className="nav-menu">
             <li>
               <Link to="/">
                 <AiFillHome className="nav-mobile-symbol nav-home-symbol" />
@@ -39,24 +39,25 @@ const Header = props => {
                 <BsFillCartFill className="nav-mobile-symbol" />
               </Link>
             </li>
-          </ul>
-
-          <button type="button" className="nav-mobile-btn">
-            <FiLogOut className="logout" onClick={onClickLogout} />
-          </button>
-        </div>
-        <div className="nav-large-container">
+            <li>
+              <button type="button" className="nav-mobile-btn">
+                <FiLogOut className="logout" onClick={onClickLogout} />
+              </button>
+            </li>
+          </div>
+        </ul>
+        <ul className="nav-large-container">
           <Link to="/" className="nav-link">
-            <div className="logo-container">
+            <li className="logo-container">
               <img
-                src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636190658/tastykitcken/Frame_274_tovmcv.jpg"
+                src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636267706/tastykitcken/Group_7420_ygqqpl.png"
                 alt="website logo"
                 className="login-website-logo-desktop-img"
               />
               <p className="logo-content">Tasty Kitchen</p>
-            </div>
+            </li>
           </Link>
-          <ul className="nav-large-menu-container">
+          <div className="nav-large-menu-container">
             <li className="nav-menu-item">
               <Link to="/" className="nav-link">
                 Home
@@ -67,7 +68,7 @@ const Header = props => {
                 Cart
               </Link>
             </li>
-          </ul>
+          </div>
           <button
             type="button"
             className="logout-desktop-btn"
@@ -75,7 +76,7 @@ const Header = props => {
           >
             Logout
           </button>
-        </div>
+        </ul>
       </div>
     </nav>
   )

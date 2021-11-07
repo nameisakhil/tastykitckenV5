@@ -7,10 +7,10 @@
 .nav-content-container {
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
   max-width: 1110px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .nav-bar-mobile-container {
   display: flex;
@@ -51,7 +51,7 @@
   color: #eb7a34;
   height: 25px;
   width: 25px;
-  margin: 15px;
+  margin-left: 10px;
 }
 
 .nav-home-symbol {
@@ -93,7 +93,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-self: flex-end;
+  align-self: center;
   flex: 1;
   list-style-type: none;
   margin-top: 0px;
@@ -141,7 +141,8 @@
 }
 
 .logo-content {
-  font-family: 'Roboto';
+  font-family: 'DM Sans';
+  font-style: italic;
   font-size: 20px;
   font-weight: 700;
   color: #ff0b37;
@@ -150,7 +151,7 @@
 
 @media screen and (min-width: 992px) {
   .logo-content {
-    font-size: 15px;
+    font-size: 28px;
   }
 }
 

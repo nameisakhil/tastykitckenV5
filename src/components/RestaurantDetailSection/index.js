@@ -83,8 +83,11 @@ class RestaurantDetailSection extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="restaurant-loader-container" testid="loader">
-      <Loader type="ThreeDots" color="#F7931E" height="50" width="50" />
+    <div
+      className="restaurant-loader-container"
+      testid="restaurant-details-loader"
+    >
+      <Loader type="Audio" color="#F7931E" height="50" width="50" />
     </div>
   )
 
@@ -125,11 +128,7 @@ class RestaurantDetailSection extends Component {
       <div className="restaurant-detail-container">
         <div className="wallpaper-container">
           <div className="content-wallpaper">
-            <img
-              src={imageUrl}
-              className="restaurant-img"
-              alt="restaurant-img"
-            />
+            <img src={imageUrl} className="restaurant-img" alt="restaurant" />
             <div className="restaurant-detail-content">
               <h1 className="name-heading">{name}</h1>
               <p className="content-description">{cuisine}</p>

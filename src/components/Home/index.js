@@ -13,6 +13,13 @@ import Footer from '../Footer'
 
 import './index.css'
 
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  inProgress: 'IN_PROGRESS',
+}
+
 const sortByOptions = [
   {
     id: 0,
@@ -26,21 +33,17 @@ const sortByOptions = [
   },
 ]
 
-const apiStatusConstants = {
-  initial: 'INITIAL',
-  success: 'SUCCESS',
-  failure: 'FAILURE',
-  inProgress: 'IN_PROGRESS',
-}
-
 class Home extends Component {
-  state = {
-    restaurantList: [],
-    apiStatus: apiStatusConstants.initial,
-    activeOptionId: sortByOptions[1].value,
-    searchInput: '',
-    activePage: 1,
-    totalItems: 0,
+  constructor(props) {
+    super(props)
+    this.state = {
+      restaurantList: [],
+      apiStatus: apiStatusConstants.initial,
+      activeOptionId: sortByOptions[1].value,
+      searchInput: '',
+      activePage: 1,
+      totalItems: 0,
+    }
   }
 
   componentDidMount() {
@@ -98,7 +101,10 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="restaurant-loader-container">
+    <div
+      className="restaurant-loader-container"
+      testid="restaurants-list-loader"
+    >
       <Loader type="Audio" color="#F7931E" height="50" width="50" />
     </div>
   )
@@ -181,7 +187,6 @@ class Home extends Component {
 
   renderRestaurantListView = () => {
     const {restaurantList, activeOptionId, activePage, totalItems} = this.state
-
     return (
       <div className="all-restaurant-container">
         {this.renderSearchInput()}
@@ -199,18 +204,18 @@ class Home extends Component {
           <button
             type="button"
             className="page-controller-button"
-            testid="left"
+            testid="pagination-left-button"
             onClick={this.onClickLeft}
           >
             <MdKeyboardArrowLeft color="#52606D" size={20} />
           </button>
-          <p className="page-no-quantity">
+          <p className="page-no-quantity" testid="active-page-number">
             {activePage} of {Math.ceil(totalItems / 9)}
           </p>
           <button
             type="button"
             className="page-controller-button"
-            testid="right"
+            testid="pagination-right-button"
             onClick={this.onClickRight}
           >
             <MdKeyboardArrowRight color="#52606D" size={20} />

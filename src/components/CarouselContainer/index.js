@@ -2,7 +2,9 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 import Cookies from 'js-cookie'
 
-import Carousel from 'react-bootstrap/Carousel'
+import Slider from 'react-slick'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css'
@@ -58,8 +60,11 @@ class CarouselContainer extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="restaurant-loader-container">
-      <Loader type="Loader" color="#F7931E" height="50" width="50" />
+    <div
+      className="restaurant-loader-container"
+      testid="restaurants-offers-loader"
+    >
+      <Loader type="Audio" color="#F7931E" height="50" width="50" />
     </div>
   )
 
@@ -83,38 +88,27 @@ class CarouselContainer extends Component {
 
   renderCarouselView = () => {
     const {offerData} = this.state
-
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+    }
     return (
-      <Carousel>
-        <Carousel.Item interval={3000}>
-          <img
-            className="d-block w-100"
-            src={offerData[0].imageUrl}
-            alt="First slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={offerData[1].imageUrl}
-            alt="Second slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={offerData[2].imageUrl}
-            alt="Third slide"
-          />
-        </Carousel.Item>
-        <Carousel.Item interval={2000}>
-          <img
-            className="d-block w-100"
-            src={offerData[3].imageUrl}
-            alt="Fourth slide"
-          />
-        </Carousel.Item>
-      </Carousel>
+      <ul>
+        <Slider {...settings}>
+          {offerData.map(eachItem => (
+            <li key={eachItem.id}>
+              <img
+                className="d-block w-100"
+                src={eachItem.imageUrl}
+                alt="offer"
+              />
+            </li>
+          ))}
+        </Slider>
+      </ul>
     )
   }
 

@@ -12,6 +12,19 @@ import PaymentSuccess from './components/PaymentSuccess'
 
 import './App.css'
 
+const sortByOptions = [
+  {
+    id: 0,
+    displayText: 'Highest',
+    value: 'Highest',
+  },
+  {
+    id: 2,
+    displayText: 'Lowest',
+    value: 'Lowest',
+  },
+]
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -119,10 +132,15 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
-          <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute
             exact
-            path="/restaurants-list/:id"
+            path="/"
+            component={Home}
+            sortByOptions={sortByOptions}
+          />
+          <ProtectedRoute
+            exact
+            path="/restaurant/:id"
             component={RestaurantDetailSection}
           />
           <ProtectedRoute exact path="/cart" component={Cart} />
@@ -131,8 +149,8 @@ class App extends Component {
             path="/payment-success"
             component={PaymentSuccess}
           />
-          <Route path="/not-found" component={NotFound} />
-          <Redirect to="not-found" />
+          <Route path="/bad-path" component={NotFound} />
+          <Redirect to="bad-path" />
         </Switch>
       </CartContext.Provider>
     )

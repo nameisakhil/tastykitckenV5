@@ -138,7 +138,7 @@ class Home extends Component {
   }
 
   changeSearchInput = searchInput => {
-    this.setState({searchInput}, this.getRestaurant)
+    this.setState({searchInput, activePage: 1}, this.getRestaurant)
   }
 
   onChangeSearchInput = event => this.changeSearchInput(event.target.value)

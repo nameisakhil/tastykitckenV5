@@ -25,16 +25,11 @@ const CartSummary = () => (
             </div>
             <p className="total-items">{cartData.length} Items in cart</p>
             <Link to="/payment-success">
-              <button type="button" className="checkout-button d-sm-none">
+              <button type="button" className="checkout-button">
                 Place Order
               </button>
             </Link>
           </div>
-          <Link to="/payment-success" className="place-order-link">
-            <button type="button" className="checkout-button d-lg-none">
-              Place Order
-            </button>
-          </Link>
         </>
       )
     }}

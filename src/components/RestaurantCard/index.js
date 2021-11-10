@@ -20,7 +20,7 @@ const RestaurantCard = props => {
     <Link to={`/restaurant/${id}`} className="link-item">
       <li className="restaurant-item" testid="restaurant-item">
         <div>
-          <img src={imageUrl} alt="restaurant-pic" className="thumbnail" />
+          <img src={imageUrl} alt="restaurant" className="thumbnail" />
         </div>
 
         <div className="card-content-container">

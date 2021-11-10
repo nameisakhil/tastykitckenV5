@@ -143,7 +143,7 @@ class RestaurantDetailSection extends Component {
                 <hr className="hr" />
                 <div className="rating-container">
                   <p className="content-description">₹ {costForTwo}</p>
-                  <p className="content-description">Coast for Two</p>
+                  <p className="content-description">Cost for two</p>
                 </div>
               </div>
             </div>

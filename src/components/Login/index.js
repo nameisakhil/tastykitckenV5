@@ -106,14 +106,7 @@ class LoginForm extends Component {
           className="login-img"
           alt="website login"
         />
-        <div className="logo-container-sm">
-          <img
-            src="https://res.cloudinary.com/dh2scpkcz/image/upload/v1636190658/tastykitcken/Frame_274_tovmcv.jpg"
-            alt="website logo"
-            className="login-website-logo-mobile-img"
-          />
-          <h1 className="logo-content">Tasty Kitchens</h1>
-        </div>
+
         <form className="form-container" onSubmit={this.submitForm}>
           <div className="logo-container-lg">
             <img

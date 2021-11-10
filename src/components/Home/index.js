@@ -197,7 +197,11 @@ class Home extends Component {
         />
         <ul className="restaurant-list">
           {restaurantList.map(restaurant => (
-            <RestaurantCard restaurantData={restaurant} key={restaurant.id} />
+            <RestaurantCard
+              restaurantData={restaurant}
+              key={restaurant.id}
+              testid="restaurant-item"
+            />
           ))}
         </ul>
         <div className="page-container">
@@ -209,8 +213,9 @@ class Home extends Component {
           >
             <MdKeyboardArrowLeft color="#52606D" size={20} />
           </button>
-          <p className="page-no-quantity" testid="active-page-number">
-            {activePage} of {Math.ceil(totalItems / 9)}
+          <p className="page-no-quantity">
+            <span testid="active-page-number">{activePage}</span> of{' '}
+            {Math.ceil(totalItems / 9)}
           </p>
           <button
             type="button"

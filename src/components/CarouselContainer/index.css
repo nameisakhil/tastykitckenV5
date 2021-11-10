@@ -3,6 +3,10 @@
   padding: 30px;
 }
 
+.slider-img {
+  width: 100%;
+}
+
 .retry-button {
   font-family: 'Roboto';
   font-weight: 600;

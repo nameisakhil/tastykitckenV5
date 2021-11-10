@@ -31,7 +31,7 @@ const CartSummary = () => (
             </Link>
           </div>
           <Link to="/payment-success" className="place-order-link">
-            <button type="button" className="checkout-button">
+            <button type="button" className="checkout-button d-lg-none">
               Place Order
             </button>
           </Link>

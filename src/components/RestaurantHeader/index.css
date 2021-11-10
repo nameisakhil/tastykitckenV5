@@ -57,9 +57,9 @@
 
 .sort-by-icon-container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  padding-top: 18px;
+  padding-top: 12px;
 }
 
 .sort-by {
@@ -75,9 +75,10 @@
   font-size: 16px;
   font-weight: 500;
   border: none;
-  padding: 12px;
+  padding-top: 12px;
   outline: none;
   cursor: pointer;
+  padding-left: 12px;
 }
 
 .select-option {

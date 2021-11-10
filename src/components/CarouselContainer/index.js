@@ -5,7 +5,6 @@ import Cookies from 'js-cookie'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 import './index.css'
 
@@ -100,11 +99,7 @@ class CarouselContainer extends Component {
         <Slider {...settings}>
           {offerData.map(eachItem => (
             <li key={eachItem.id}>
-              <img
-                className="d-block w-100"
-                src={eachItem.imageUrl}
-                alt="offer"
-              />
+              <img className="slider-img" src={eachItem.imageUrl} alt="offer" />
             </li>
           ))}
         </Slider>

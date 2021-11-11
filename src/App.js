@@ -43,7 +43,7 @@ class App extends Component {
       localStorage.setItem('cartData', JSON.stringify(cartData))
     }
   }
-
+//component did mount 
   componentDidUpdate() {
     const {cartData} = this.state
     localStorage.setItem('cartData', JSON.stringify(cartData))
